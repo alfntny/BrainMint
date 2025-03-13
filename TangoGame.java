@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class TangoGame {
-    private static final int SIZE = 5; // Size of the grid
-    private char[][] grid; // Game grid
+    private static final int SIZE = 6;
+    private char[][] grid;
     private Scanner scanner;
 
     public TangoGame() {
@@ -14,7 +14,7 @@ public class TangoGame {
     private void initializeGrid() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                grid[i][j] = '.'; // Use '.' to represent empty cells
+                grid[i][j] = '.';
             }
         }
     }
@@ -43,13 +43,12 @@ public class TangoGame {
 
     private boolean isValidMove(int row, int col, char symbol) {
         if (row < 0 || row >= SIZE || col < 0 || col >= SIZE || (symbol != 'S' && symbol != 'M')) {
-            return false; // Out of bounds or invalid symbol
+            return false;
         }
         if (grid[row][col] != '.') {
-            return false; // Cell already filled
+            return false;
         }
 
-        // Count existing symbols in the row and column
         int sunCountRow = 0;
         int moonCountRow = 0;
         int sunCountCol = 0;
@@ -66,14 +65,13 @@ public class TangoGame {
                 moonCountCol++;
         }
 
-        // Check if placing the symbol would keep the counts equal
         if (symbol == 'S') {
             if (sunCountRow >= SIZE / 2 || sunCountCol >= SIZE / 2) {
-                return false; // Cannot place more Suns than allowed
+                return false;
             }
         } else if (symbol == 'M') {
             if (moonCountRow >= SIZE / 2 || moonCountCol >= SIZE / 2) {
-                return false; // Cannot place more Moons than allowed
+                return false;
             }
         }
 
@@ -81,7 +79,6 @@ public class TangoGame {
     }
 
     private boolean checkWin() {
-        // Check if the grid is filled correctly (basic check)
         int sunCount = 0;
         int moonCount = 0;
 
@@ -95,7 +92,6 @@ public class TangoGame {
             }
         }
 
-        // Example win condition: equal number of suns and moons
         return sunCount == moonCount && sunCount + moonCount == SIZE * SIZE;
     }
 
