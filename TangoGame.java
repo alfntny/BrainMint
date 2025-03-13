@@ -22,7 +22,7 @@ public class TangoGame {
     public void play() {
         while (true) {
             printGrid();
-            System.out.println("Enter row (0-4), column (0-4), and symbol (S for Sun, M for Moon): ");
+            System.out.println("Enter row (0-5), column (0-5), and symbol (S for Sun, M for Moon): ");
             int row = scanner.nextInt();
             int col = scanner.nextInt();
             char symbol = scanner.next().toUpperCase().charAt(0);
